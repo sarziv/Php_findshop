@@ -4,17 +4,17 @@
 //$address = $_SERVER['REMOTE_ADDR'];
 
 //Static ip for dummy data
-$address = "85.206.230.5";
+$address = "85.206.115.36";
 $api = 'http://ip-api.com/json/'.$address;
 $data = file_get_contents($api);
 $data = json_decode($data,true);
-
 
 //json file with shop data
 $listfile = file_get_contents('list.json');
 $shops = json_decode($listfile,true);
 
 ?>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 <head>
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Slabo+27px" rel="stylesheet">
@@ -47,7 +47,7 @@ $shops = json_decode($listfile,true);
             padding: 0;
         }
     </style>
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_APP_KEY"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key= "></script>
 <script>
     var locations = [
         <?php foreach ($shops as $shop) {
@@ -110,6 +110,7 @@ $shops = json_decode($listfile,true);
         <P>This have small sample of dummy data so ip set static.</P>
         <p>Get list of shops from root/list.json API alternative <a href="list.json">List</a></p>
         <p>API User Data -> Application <- API Shop Data</p>
+        <p><a href="https://github.com/sarziv/Php_findshop">Open Project on </a><i class="fab fa-github"></i></p>
     </div>
 </div>
 <div class="container">
