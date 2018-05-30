@@ -1,0 +1,66 @@
+[
+  {
+    "shop":"Holder",
+    "country":"Republic of Lithuania",
+    "countryCode":"LT",
+    "city":"Vilnius",
+    "lat":"54.927740",
+    "lon":"54.927540"
+  },
+  {
+    "shop":"Tamalis",
+    "country":"Canada",
+    "countryCode":"USA",
+    "city":"Texas",
+    "lat":"54.927340",
+    "lon":"23.937260"
+  },
+  {
+    "shop":"Holder",
+    "country":"Texas",
+    "countryCode":"USA",
+    "city":"Kaunas",
+    "lat":"54.927040",
+    "lon":"23.937260"
+  },
+  {
+    "shop":"Fast Chicken",
+    "country":"Republic of Lithuania",
+    "countryCode":"LT",
+    "city":"Kaunas",
+    "lat":"54.927840",
+    "lon":"23.937260"
+  },
+  {
+    "shop":"Good ride",
+    "country":"Republic of Lithuania",
+    "countryCode":"LT",
+    "city":"Kaunas",
+    "lat":"54.894482",
+    "lon":"23.921446"
+  },
+  {
+    "shop":"Pop Dance",
+    "country":"Republic of Lithuania",
+    "countryCode":"LT",
+    "city":"Vilnius",
+    "lat":"54.927140",
+    "lon":"23.937260"
+  },
+  {
+    "shop":"Lance Dance",
+    "country":"Canada",
+    "countryCode":"USA",
+    "city":"New York",
+    "lat":"54.927240",
+    "lon":"23.937260"
+  },
+  {
+    "shop":"Lavanger",
+    "country":"Republic of Lithuania",
+    "countryCode":"LT",
+    "city":"Kaunas",
+    "lat":"54.895454",
+    "lon":"23.895386"
+  }
+]
