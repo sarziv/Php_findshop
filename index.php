@@ -1,8 +1,8 @@
 <html>
 <?php
 //Production
-//$address = $_SERVER['REMOTE_ADDR'];
 
+//$address = $_SERVER['REMOTE_ADDR'];
 //Static ip for dummy data
 $address = "85.206.115.36";
 $api = 'http://ip-api.com/json/'.$address;
@@ -47,58 +47,62 @@ $shops = json_decode($listfile,true);
             padding: 0;
         }
     </style>
-    <script src="https://maps.googleapis.com/maps/api/js?key= "></script>
-<script>
-    var locations = [
-        <?php foreach ($shops as $shop) {
-    if($data['city'] == $shop['city']) {
-        echo '[' . $shop['lat'] . ','  . $shop['lon']. '],' ;
-        }}?>
-     ];
-
-
-    function initialize() {
-
-        //maps details
-        var latlng = new google.maps.LatLng(<?php echo $data['lat'] ?>,<?php echo $data['lon'] ?>);
-        var latlng2 = new google.maps.LatLng(<?php echo $data['lat'] ?>,<?php echo $data['lon'] ?>);
-
-        //draw map left user
-        var myOptions = {
-            zoom: 11,
-            center: latlng,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        //draw map right module
-        var myOptions2 =  {
-            zoom: 12,
-            center: latlng2,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-
-
-        var map = new google.maps.Map(document.getElementById("map"), myOptions);
-        var map2 = new google.maps.Map(document.getElementById("map1"), myOptions2);
-
-        //map user
-        var myMarker = new google.maps.Marker(
-            {
-                position: latlng,
-                map: map,
-            });
-
-        var count;
-        //map module marking
-        for (count = 0; count < locations.length; count++) {
-        var myMarker2 = new google.maps.Marker(
-            {
-                position: new google.maps.LatLng(locations[count][0], locations[count][1]),
-                map: map2,
-            });
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5L50bnueFbAeFXMa8lKAeqEr1YQTVaz0 "></script>
+    <script>
+        var locations = [
+            <?php foreach ($shops as $shop) {
+             if($data['city'] == $shop['city']) {
+                echo '[' . $shop['lat'] . ',' . $shop['lon'] . '],';
             }
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
-</script>
+        }
+            //if no shop return my location
+            if($data['city'] != $shop['city']) {echo '[' . $data['lat'] . ',' . $data['lon'] . '],';}
+            ?>
+        ];
+
+
+        function initialize() {
+
+            //maps details
+            var latlng = new google.maps.LatLng(<?php echo $data['lat'] ?>,<?php echo $data['lon'] ?>);
+            var latlng2 = new google.maps.LatLng(<?php echo $data['lat'] ?>,<?php echo $data['lon'] ?>);
+
+            //draw map left user
+            var myOptions = {
+                zoom: 11,
+                center: latlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            //draw map right module
+            var myOptions2 =  {
+                zoom: 12,
+                center: latlng2,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+
+            var map = new google.maps.Map(document.getElementById("map"), myOptions);
+            var map2 = new google.maps.Map(document.getElementById("map1"), myOptions2);
+
+            //map user
+            var myMarker = new google.maps.Marker(
+                {
+                    position: latlng,
+                    map: map,
+                });
+
+            var count;
+            //map module marking
+            for (count = 0; count < locations.length; count++) {
+                var myMarker2 = new google.maps.Marker(
+                    {
+                        position: new google.maps.LatLng(locations[count][0], locations[count][1]),
+                        map: map2,
+                    });
+            }
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
 </head>
 <body>
 
@@ -115,34 +119,22 @@ $shops = json_decode($listfile,true);
 </div>
 <div class="container">
     <div class="row">
-<ul class="list-group col-sm-4">
-    <h4 class="text-center">User data:</h4>
-<li class="list-group-item list-group-item-secondary listgrColor">City: <?php echo $data['city'] ?> </li>
-    <li class="list-group-item list-group-item-secondary listgrColor">Country: <?php echo $data['country'] ?></li>
-    <li class="list-group-item list-group-item-secondary listgrColor">Country Code: <?php echo $data['countryCode'] ?></li>
-    <li class="list-group-item list-group-item-secondary listgrColor">Latitude: <?php echo $data['lat'] ?></li>
-    <li class="list-group-item list-group-item-secondary listgrColor">Longitude: <?php echo $data['lon'] ?></li>
-    <div id="map"></div>
-</ul>
-    <div class="col-sm-8 text-center">
-        <h4>Module output:</h4>
-        <div id="map1"></div>
-        <div class="col-sm-4">
-            <br>
-            <h6>PHP output:</h6>
-            <?php
-            foreach ($shops as $shop) {
-                echo '<ul>';
-            if($data['city'] == $shop['city']) {
-            echo '<li>'. $shop['city'] . '</li>';
-            echo '<li>'. $shop['shop'] . '</li>';
-            echo '<li>'.$shop['lat'] . '</li>';
-            echo '<li>'.$shop['lon'] . '</li>';
-            }
-                echo '</ul>';
-            } ?>
+        <ul class="list-group col-sm-4">
+            <h4 class="text-center">User data:</h4>
+            <li class="list-group-item list-group-item-secondary listgrColor">City: <?php echo $data['city'] ?> </li>
+            <li class="list-group-item list-group-item-secondary listgrColor">Country: <?php echo $data['country'] ?></li>
+            <li class="list-group-item list-group-item-secondary listgrColor">Country Code: <?php echo $data['countryCode'] ?></li>
+            <li class="list-group-item list-group-item-secondary listgrColor">Latitude: <?php echo $data['lat'] ?></li>
+            <li class="list-group-item list-group-item-secondary listgrColor">Longitude: <?php echo $data['lon'] ?></li>
+            <div id="map"></div>
+        </ul>
+        <div class="col-sm-8 text-center">
+            <h4>Module output:</h4>
+            <div id="map1"></div>
+            <div class="col-sm-4">
+                <br>
+            </div>
         </div>
-         </div>
     </div>
 </div>
 
