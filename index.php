@@ -47,7 +47,7 @@ $shops = json_decode($listfile,true);
             padding: 0;
         }
     </style>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5L50bnueFbAeFXMa8lKAeqEr1YQTVaz0 "></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key= "></script>
     <script>
         var locations = [
             <?php foreach ($shops as $shop) {
