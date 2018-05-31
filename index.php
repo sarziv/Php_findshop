@@ -1,19 +1,19 @@
 <html>
 <?php
 //Production
-
 //$address = $_SERVER['REMOTE_ADDR'];
 //Static ip for dummy data
+
 $address = "85.206.115.36";
-$api = 'http://ip-api.com/json/'.$address;
+$api = 'http://api.ipstack.com/'.$address.'?access_key=3fc51eccd97bd59a98f02549004aa32e';
 $data = file_get_contents($api);
 $data = json_decode($data,true);
 
 //json file with shop data
 $listfile = file_get_contents('list.json');
 $shops = json_decode($listfile,true);
-
 ?>
+
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 <head>
@@ -47,16 +47,14 @@ $shops = json_decode($listfile,true);
             padding: 0;
         }
     </style>
-    <script src="https://maps.googleapis.com/maps/api/js?key= "></script>
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5L50bnueFbAeFXMa8lKAeqEr1YQTVaz0 "></script>
     <script>
         var locations = [
             <?php foreach ($shops as $shop) {
              if($data['city'] == $shop['city']) {
-                echo '[' . $shop['lat'] . ',' . $shop['lon'] . '],';
+                echo '[' . $shop['latitude'] . ',' . $shop['longitude'] . '],';
             }
         }
-            //if no shop return my location
-            if($data['city'] != $shop['city']) {echo '[' . $data['lat'] . ',' . $data['lon'] . '],';}
             ?>
         ];
 
@@ -64,8 +62,8 @@ $shops = json_decode($listfile,true);
         function initialize() {
 
             //maps details
-            var latlng = new google.maps.LatLng(<?php echo $data['lat'] ?>,<?php echo $data['lon'] ?>);
-            var latlng2 = new google.maps.LatLng(<?php echo $data['lat'] ?>,<?php echo $data['lon'] ?>);
+            var latlng = new google.maps.LatLng(<?php echo $data['latitude'] .','. $data['longitude'] ?>);
+            var latlng2 = new google.maps.LatLng(<?php echo $data['latitude'] .','. $data['longitude'] ?>);
 
             //draw map left user
             var myOptions = {
@@ -102,6 +100,7 @@ $shops = json_decode($listfile,true);
             }
         }
         google.maps.event.addDomListener(window, 'load', initialize);
+
     </script>
 </head>
 <body>
@@ -110,10 +109,9 @@ $shops = json_decode($listfile,true);
     <div class="jumbotron">
         <h1>Shop Finder Module</h1>
         <p>Find user closet shop in City/Country and mark then on the map </p>
-        <p>Free API for location  -> ip-api.com</p>
+        <p>IP API  -> api.ipstack.com</p>
         <P>This have small sample of dummy data so ip set static.</P>
-        <p>Get list of shops from root/list.json API alternative <a href="list.json">List</a></p>
-        <p>API User Data -> Application <- API Shop Data</p>
+        <p>Get list of shops from root/list.json <a href="list.json">List</a></p>
         <p><a href="https://github.com/sarziv/Php_findshop">Open Project on </a><i class="fab fa-github"></i></p>
     </div>
 </div>
@@ -122,10 +120,10 @@ $shops = json_decode($listfile,true);
         <ul class="list-group col-sm-4">
             <h4 class="text-center">User data:</h4>
             <li class="list-group-item list-group-item-secondary listgrColor">City: <?php echo $data['city'] ?> </li>
-            <li class="list-group-item list-group-item-secondary listgrColor">Country: <?php echo $data['country'] ?></li>
-            <li class="list-group-item list-group-item-secondary listgrColor">Country Code: <?php echo $data['countryCode'] ?></li>
-            <li class="list-group-item list-group-item-secondary listgrColor">Latitude: <?php echo $data['lat'] ?></li>
-            <li class="list-group-item list-group-item-secondary listgrColor">Longitude: <?php echo $data['lon'] ?></li>
+            <li class="list-group-item list-group-item-secondary listgrColor">Country: <?php echo $data['country_name'] ?></li>
+            <li class="list-group-item list-group-item-secondary listgrColor">Country Code: <?php echo $data['country_code'] ?></li>
+            <li class="list-group-item list-group-item-secondary listgrColor">Latitude: <?php echo $data['latitude'] ?></li>
+            <li class="list-group-item list-group-item-secondary listgrColor">Longitude: <?php echo $data['longitude'] ?></li>
             <div id="map"></div>
         </ul>
         <div class="col-sm-8 text-center">
