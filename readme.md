@@ -1,2 +1,2 @@
-Shop finder example [HERE](http://ifsmart.online)
+Shop finder example [HERE](http://shopfinder.online/)
 
